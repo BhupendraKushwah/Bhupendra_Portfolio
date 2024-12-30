@@ -6,7 +6,6 @@ const dbName =  process.env.DB_NAME;
 mongoose
 .connect(dbUrl, {
   dbName,
-  useNewUrlParser: true,
   autoIndex: true,
 })
   .then((status) => console.info(`Connection establised to ${dbName}`))
