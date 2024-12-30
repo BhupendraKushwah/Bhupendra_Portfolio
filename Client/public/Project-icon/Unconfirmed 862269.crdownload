@@ -1,0 +1,627 @@
+<?php
+$url = $_SERVER['HTTP_HOST'];
+$parsedUrl = parse_url($url);
+$host = $parsedUrl['path'];
+if(strpos($parsedUrl['path'], 'www.' )!== false){
+	$host = str_replace('www.', "", $parsedUrl['path']);
+}
+$host = explode('.', $host);
+$subdomain = $host[0];
+
+//if ($subdomain == 'agamimys') {
+if ($subdomain == 'schezy') {
+
+	?>
+	<!DOCTYPE html>
+	<html lang="en" data-ng-app="mysSadminApp">
+	<head>
+		<base href="/">
+
+		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Schezy is a one stop quality solution to manage your school. Manage your school like never before!">
+		<meta name="author" content="">
+		<meta content="School Management System, School, School Websites, School App,Parent Portal,Staff Portal,Admin Portal, Dynamic Online School Website, paperless school management" name="keywords" />
+		<meta name="theme-color" content="#fff">
+		<meta property="og:title" content="Schezy | School Management System" />
+
+
+      <meta property="og:url" content="https://www.schezy.com/client/images/superadmin/mys/banner.png">
+      <meta property="og:image" content="https://www.schezy.com/client/images/superadmin/mys/banner.png">
+      <meta name=”twitter:title” content=”Schezy | School Management System” />
+      <meta name=”twitter:description” content=”Schezy is a one stop quality solution to manage your school. Manage your school like never before!” />
+      <meta name=”twitter:url” content=”https://www.schezy.com/client/images/superadmin/mys/banner.png” />
+      <meta name=”twitter:image” content=”https://www.schezy.com/client/images/superadmin/mys/banner.png” />
+		<link rel="icon" href="./client/images/logo_header.png">
+
+		<title>Schezy |School Management System</title>
+
+		<span ng-if="!isFranchiseLogin">
+
+			<link rel="stylesheet" href="./client/css/superadmin/style.css" type="text/css" />
+			<link rel="stylesheet" href="./client/css/superadmin/font-awesome.css" type="text/css" />
+			<link rel="stylesheet" href="./client/css/superadmin/font-awesome.min.css" type="text/css" />
+
+
+		</span>
+
+
+		<link rel="stylesheet" href="./client/css/superadmin/ngDialog.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/growl.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/examples.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/bar.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/jquery-ui.min.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/ngDialog-theme-default.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/angucomplete-alt.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/stylesheet.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/superadmin/angular-datepicker.css">
+		<link rel="stylesheet" href="./client/css/superadmin_user/style.css" type="text/css" />
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+		<link rel="stylesheet" href="./client/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="./client/mys_css/style.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/table.css">
+		<link rel="stylesheet" href="./client/css/notification.css">
+
+
+		<!-- --------------------------new file---------------------------------------------- -->
+
+		<span ng-if="isFranchiseLogin">
+			<link rel="stylesheet" href="./client/mys_css/font-awesome.min.css" type="text/css" />
+			<link rel="stylesheet" href="./client/mys_css/bootstrap.css" type="text/css" />
+			<link rel="stylesheet" href="./client/mys_css/style.css" type="text/css" />
+			<!--  <script defer src="./client/js/ng-droplet.js/ng-droplet.js"></script> -->
+		</span>
+		<span ng-if="!islogin && !isUserLogin">
+       <link rel="stylesheet" href="./client/mys_css/home.css" type="text/css" />
+		</span>
+
+		<script>
+			/* returns a true value if device has a touch screen no matter what type of device it is */ 
+			var isTouchScreen = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+			if(isTouchScreen === true) {
+				//alert("You are using a touch screen")
+				document.write('<link rel="stylesheet" type="text/css" href="./client/mys_css/mobile-style.css">');
+
+			} else {
+			 	//alert("You are Browser")
+			}
+
+			/* ALternate Option */
+			/*
+			var bMobile =   // will be true if running on a mobile device
+  				navigator.userAgent.indexOf( "Mobile" ) !== -1 || 
+  				navigator.userAgent.indexOf( "iPhone" ) !== -1 || 
+  				navigator.userAgent.indexOf( "Android" ) !== -1 || 
+  				navigator.userAgent.indexOf( "Windows Phone" ) !== -1 ;
+            */
+		</script>
+
+		<script>
+			var ui_url = location.origin +'/agamimys/';
+			var google_autocomplate = false;
+			var app_mode = 'online';
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140211831-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-140211831-1');
+		</script>
+	</head>
+
+	<body ng-class="{'body_bg':isUserLogin || islogin}">
+
+		<div id="container">
+
+			<div data-ng-controller ="commonController" ng-show="islogin"  class="header_height" ng-include src="'./client/client_mvc/partials/include_files/superadmin_header.html'">
+			</div>
+			<div data-ng-controller = "userController" ng-show="isUserLogin"  ng-include src="'./client/client_mvc/partials/include_files/mys_user_header.html'"></div>
+			<div ui-view></div>
+			<div  ng-include src="'./client/client_mvc/partials/include_files/footer.html'"></div>
+			<div data-ng-controller = "userController"  ng-include src="'./client/client_mvc/partials/include_files/user_footer.html'"></div>
+
+		</div>
+
+		 	<!-- <script src='./client/js/image-crop-styles.css'></script> -->
+		<script   src='./client/js/jquery.min.js' ></script>
+		<script defer src='./client/js/jquery-ui.min.js' ></script>
+		<script src='./client/js/angular.min.js' ></script>
+		<script defer src='./client/js/ui-bootstrap.min.js' ></script>
+
+
+		<script defer src="./client/mys_js/jquery-1.11.1.min.js"></script>
+		<script defer src="./client/mys_js/bootstrap.min.js"></script>
+		<script defer src="./client/mys_js/jquery.touchSwipe.min.js"></script>
+
+		<script defer src='./client/js/angular-route.js' ></script>
+		<script defer src='./client/js/superadmin/angular-resource.js' ></script>
+		<script defer src='./client/js/ngDialog.js' ></script>
+		<script defer src='./client/js/angular-animate.js' ></script>
+		<script defer src='./client/js/angular-cookies.js' ></script>
+		<script defer src='./client/js/ngStorage.js' ></script>
+		<script defer src='./client/js/angular-growl.js' ></script>
+		<script defer src='./client/js/angular-sanitize.js' ></script>
+		<script defer src='./client/js/ui-bootstrap-tpls-1.3.3.js' ></script>
+		<script defer src='./client/js/ng-file-upload.js'></script>
+		<script defer src='./client/js/underscore-min.js'></script>
+		<script defer src='./client/js/angular-ui-router.min.js'></script>
+		<script defer src='./client/js/checklist-model.js'></script>
+		<script defer src='./client/js/angucomplete-alt.js'></script>
+		<script defer src='./client/js/angular-scroll.js' ></script>
+		<script defer src='./client/js/ng-infinite-scroll.js' ></script>
+		<!-- vsGoogleAutocomplete -->
+		<script src="./client/js/vs-google-autocomplete.js"></script>
+		<script defer src='./client/client_mvc/mys_superadmin_app.js' ></script>
+		<script defer src='./client/client_mvc/directives/superadmin/directive.js' ></script>
+		<script defer src='./client/client_mvc/controllers/superadmin/commonController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/superadmin/adminController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/superadmin/pushNotificationController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/superadmin/addController.js' ></script>
+		<script src='./client/js/socket.io-1.3.4.js'></script>
+
+		<script defer src='./client/client_mvc/controllers/superadmin/authController.js' ></script>
+		<script defer src='./client/client_mvc/services/superadmin/adminService.js' ></script>
+		<script defer src='./client/client_mvc/services/superadmin/scrollService.js' ></script>
+	<!-- 	<script defer src='./client/client_mvc/services/superadmin/paymentService.js' ></script> -->
+		<script defer src='./client/client_mvc/services/superadmin/commonService.js' ></script>
+		<script defer src='./client/js/angular-datepicker.js' ></script>
+		<script defer src='./client/client_mvc/controllers/superadmin/userController.js' ></script>
+		<script defer src='./client/client_mvc/services/superadmin/userService.js' ></script>
+
+		<!-- <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvmsy4FajxPnshcoQ4IT51ZBVOKo35tv0&libraries=places"></script> -->
+		<script  src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.4.1/sha1.min.js"></script>
+		<!-- <script defer src='./client/client_mvc/controllers/superadmin_user/paymentController.js' ></script>
+	 -->	<!-- <script src="https://js.instamojo.com/v1/checkout.js"></script> -->
+		<script defer src='./client/js/angularjs-google-maps.js' ></script>
+
+		<!-- <script src='./client/js/googlemapapi.js'></script> -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi9XeD-hFBzJ-Pi-t7SqMMarCkocpcnXQ&libraries=places"></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+		<script>
+			function isNumberKey(evt){
+				var charCode = (evt.which) ? evt.which : evt.keyCode
+				if (charCode > 31 && (charCode < 48 || charCode > 57))
+				{
+					return false;
+				}
+				else if (charCode >= 65 && charCode <= 90) {
+					return true;
+				}
+				else if (charCode == 8) {
+					return true;
+				}//For Backspace
+				else if (charCode == 9) {
+					return true;
+				}
+
+				else if (charCode == 0) {
+					return true;
+				}//For General
+
+				else if (charCode == 32) {
+					return true;
+				}//For Space
+				else if (charCode >= 37 && charCode <=40) {
+					return true;
+				}
+				else
+				{
+					return true;
+				}
+			}
+
+			function isDecimalNumberKey(evt)
+			{
+				var charCode = (evt.which) ? evt.which : evt.keyCode;
+				if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+			}
+
+			function isCharacterKey(evt){
+				var keyval = (evt.which) ? evt.which : evt.keyCode
+				if(keyval <48 || keyval > 57)
+				{
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		</script>
+		<script>
+			if(app_mode != 'offline'){
+				//var socket = io.connect("https://schezy.com:3000");
+				var socket = null;
+				<?php if($host[1] == 'schezy' && $host[2] == 'com') { ?>
+					socket = io.connect("https://schezy.com/socket.io");
+				<?php }else{ ?>
+					socket = io.connect("http://<?php echo $host[1].'.'.$host[2]; ?>/socket.io");
+				<?php } ?>
+                                
+			}
+		</script>
+		<audio id="notification_sound" src="./client/sound/solemn.m4r" preload="auto"></audio>
+	</body>
+	<div id="veil" data-ng-show="showLoader"></div>
+	<div id="feedLoading"  ng-show="showLoader"><div class="load_wrap_inner" >
+		<div class="load_wrap_img"></div>
+		<p class="load_wrap_text"> Schezy Loading... </p>
+	</div>
+</div>
+</html>
+
+<?php
+}else  {
+	?>
+	<!DOCTYPE html>
+
+
+	<html lang="en" data-ng-app="mysApp">
+	<head>
+		<base href="/">
+		<?php
+		//print_r('expression called')
+		//clearstatcache();
+		header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
+		header("Content-Type: text/html; charset=UTF-8");
+		header('Cache-Control: post-check=0, pre-check=0', FALSE);
+		header('Pragma: no-cache, no-store');
+		header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+		?>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="AgamiMYS is a one stop quality solution to manage your school. Manage your school like never before!">
+		<meta name="author" content="">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<link rel="icon" href="{{bucketPath}}{{domain_name}}/small/{{school_image}}">
+      <link rel="manifest" href="./client/manifest.json">
+		<script src="./client/index.js"></script>
+
+		<meta name="msapplication-config" content="browserconfig.xml">
+		<link rel="shortcut icon" href="favicon.ico">
+		<!-- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#fff">
+ <link rel="manifest" id="my-manifest-placeholder">
+		<meta name="apple-mobile-web-app-title" content="Yes">
+		<meta name="application-name" content="">
+		<meta name="msapplication-TileColor" content="#fff">
+		<meta name="theme-color" content="#fff">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-wep-app-capable" content="yes">
+		<meta name="msapplication-starturl" content="/login">
+
+		<title ng-bind="title">Schezy</title>
+
+		<link rel="stylesheet" href="./client/css/home_page-template_style.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/ngDialog.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/font-awesome.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/growl.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/examples.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/bar.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/jquery-ui.min.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/ngDialog-theme-default.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/ngDialog-theme-default.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/textAngular.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/tooltip.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/animate.css">
+		<link rel="stylesheet" href="./client/css/Default.css">
+		<link rel="stylesheet" href="./client/css/ngFader.css">
+		<link rel="stylesheet" href="./client/css/selectize.default.css">
+		<link rel="stylesheet" href="./client/css/angular-material.css">
+		<link rel="stylesheet" href="./client/css/angular-datepicker.css">
+		<link rel="stylesheet" href="./client/css/angucomplete-alt.css">
+		<link rel="stylesheet" href="./client/css/angular-input-stars.css">
+		<link rel="stylesheet" href="./client/css/isteven-multi-select.css">
+		<!-- <link rel="stylesheet" href="./client/client_mvc/partials/template/{{template_name}}/css/style.css"> -->
+		<link rel="stylesheet" href="./client/client_mvc/partials/template/mys/css/style.css">
+
+		<link rel="stylesheet" href="./client/css/notification.css">
+		<link rel="stylesheet" href="./client/css/dropzone.css">
+		<link rel="stylesheet" href="./client/css/basic.css">
+		<link rel="stylesheet" href="./client/css/table.css">
+
+		<link rel="stylesheet" href="./client/mys_css/style.css" type="text/css" />
+		<link rel="stylesheet" href="./client/css/style.css" type="text/css" />
+		<script>
+			var ui_url = location.origin +'/agamimys/';
+			var app_mode = 'online';
+		</script>
+	</head>
+	<body ng-class="{'body_bg':isUserLogin || islogin}">
+		<span ng-init="check_school_status();"></span>
+		<div id="container">
+			<div ng-if="islogin && !is_receipt_page" class="header_height" ng-include src="'./client/client_mvc/partials/include_files/header.html'"></div>
+			<div ng-if="template_header" ng-include src="header_url"></div>
+			<div ui-view></div>
+			<!-- <div ng-if="islogin" ng-include src="'./client/client_mvc/partials/include_files/footer.html'"></div> -->
+			<div ng-if="template_header" ng-include src="footer_url"></div>
+		</div>
+
+		<script src='./client/js/jquery.min.js' ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src='./client/js/jquery-ui.min.js' ></script>
+		<script src='./client/js/angular.min.js' ></script>
+	<!-- 	<script src='./client/js/ocLazyLoad.js' ></script>
+		<script src='./client/js/ocLazyLoadRequire.js' ></script> -->
+		<!-- <script defer src="./client/mys_js/index.js"></script> -->
+		<script defer src='./client/js/angular-route.min.js' ></script>
+		<script defer src='./client/js/angular-ui-router.min.js' ></script>
+		<script defer src='./client/js/angular-resource.min.js' ></script>
+		<script defer src='./client/js/ui-bootstrap.min.js' ></script>
+		<script defer src='./client/js/bootstrap.min.js' ></script>
+		<script defer src='./client/js/ngDialog.js' ></script>
+		<script defer src='./client/js/angular-animate.js' ></script>
+		<script defer src='./client/js/angular-touch.js' ></script>
+		<script defer src='./client/js/angular-material.js' ></script>
+		<script defer src='./client/js/angular-aria.min.js' ></script>
+		<script defer src='./client/js/angular-messages.min.js' ></script>
+		<script defer src='./client/js/angular-cookies.js' ></script>
+		<script defer src='./client/js/ngStorage.js' ></script>
+		<script defer src='./client/js/angular-growl.js' ></script>
+		<script defer src='./client/js/angular-cropper.js' ></script>
+		<script defer src='./client/js/angular-sanitize.js' ></script>
+		<script defer src='./client/js/ui-bootstrap-tpls-1.3.3.js' ></script>
+		<script defer src='./client/js/ng-file-upload.js'></script>
+		<script defer src='./client/js/angularjs-dropdown-multiselect.min.js'></script>
+		<script defer src='./client/js/highcharts-ng.js'></script>
+		<script defer src="./client/js/highstock.src.js"></script>
+	<!-- 	<script defer src="./client/js/lodash.min.js"></script> -->
+		<script defer src="./client/js/moment.js"></script>
+		<script defer src="./client/js/progressbar.js"></script>
+		<script defer src='./client/js/textangular/textAngular-rangy.min.js'></script>
+		<script defer src='./client/js/textangular/textAngular-sanitize.min.js'></script>
+		<script defer src='./client/js/textangular/textAngular.min.js'></script>
+		<script defer src='./client/js/angular-selectize.js'></script>
+		<script defer src='./client/js/sifter.js'></script>
+		<script defer src='./client/js/checklist-model.js' ></script>
+		<script defer src='./client/js/ngGeolocation.min.js' ></script>
+		<script defer src='./client/js/angular-datepicker.js' ></script>
+		<script defer src='./client/js/angucomplete-alt.js' ></script>
+		<script defer src='./client/js/isteven-multi-select.js' ></script>
+		<script defer src='./client/js/ng-infinite-scroll.js' ></script>
+		<script defer src='./client/js/dropzone.js' ></script>
+		<script defer src='./client/js/ng-dropzone.js' ></script>
+		<script defer src='./client/js/angular-scroll.js' ></script>
+		<!-- <script defer src='./client/js/pdfmake.js' ></script>
+		 --><!-- <script defer src='./client/js/vfs_fonts.js' ></script>
+	 -->	<script defer src='./client/js/angular-input-stars.js' ></script>
+	<!-- 	<script defer src='./client/js/jspdf.debug.js' ></script> -->
+		<script defer src='./client/js/html2canvas.js' ></script>
+		<script defer src='./client/js/jquery-ui-1.8.17.custom.min.js' ></script>
+		<!-- <script defer src='./client/js/ngPrint.min.js' ></script> -->
+
+		<script defer src='./client/js/underscore-min.js'></script>
+		<script defer src='./client/js/dirPagination.js'></script>
+		<script defer src='./client/js/scrollbar.min.js'></script>
+		<script defer src='./client/js/angular-filter.min.js'></script>
+		<script defer src="./client/js/jssor.slider-21.1.5.mini.js"></script>
+		<script defer src="./client/js/imgLiquid-min.js"></script>
+		<script defer src='././client/client_mvc/mys_app.js' ></script>
+		<script defer src='./client/client_mvc/directives/directive.js' ></script>
+		<script defer src='././client/js/ngFader.js' ></script>
+		<script defer src='././client/client_mvc/controllers/commonController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/dashboardController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/adminController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/adminController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/paymentController.js' ></script>
+		<script defer src='./client/client_mvc/services/adminService.js' ></script>
+		<script defer src='./client/client_mvc/services/settingService.js' ></script>
+		<script defer src='./client/client_mvc/services/routineService.js' ></script>
+		<script defer src='./client/client_mvc/services/paymentService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/galleryController.js' ></script>
+		<script defer src='./client/client_mvc/services/galleryService.js' ></script>
+		<script defer src='./client/client_mvc/services/whatsappService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/settingController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/addressController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/onlineRegistrationController.js' ></script>
+		<script defer src='./client/client_mvc/services/onlineRegistrationService.js' ></script>
+
+		<script defer src='./client/client_mvc/controllers/routineController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/reportController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/examinationController.js' ></script>
+		<script defer src='./client/client_mvc/services/examinationService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/transportController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/parentsController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/tabsController.js' ></script>
+		<script defer src='./client/client_mvc/services/reportService.js' ></script>
+		<script defer src='./client/client_mvc/services/transportService.js' ></script>
+		<script defer src='./client/client_mvc/services/studentService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/ngDynamicForms.js' ></script>
+		<script defer src='./client/client_mvc/controllers/studentController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/authController.js' ></script>
+		<script defer src='./client/client_mvc/services/parentService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/disciplineController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/aboutUsController.js' ></script>
+		<script defer src='./client/client_mvc/services/aboutusService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/workReportController.js' ></script>
+		<script defer src='./client/client_mvc/services/workReportService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/hostelController.js' ></script>
+		<script defer src='./client/client_mvc/services/hostelService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/homeController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/leaveController.js' ></script>
+		<script defer src='./client/client_mvc/services/leaveService.js' ></script>
+		<script defer src='./client/client_mvc/services/commonService.js' ></script>
+		<script defer src='./client/client_mvc/services/priceService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/priceController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/smsController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/whatsappController.js' ></script>
+		<script src='./client/js/socket.io-1.3.4.js'></script>
+		<script defer src='./client/client_mvc/services/payrollService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/payrollController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/pushNotificationController.js' ></script>
+		<script defer src='./client/client_mvc/services/testimonialService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/testimonialController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/bankSetupController.js' ></script>
+		<script defer src='./client/client_mvc/services/bankSetupService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/holidayController.js' ></script>
+		<script defer src='./client/client_mvc/services/holidayService.js' ></script>
+		<script defer src='./client/client_mvc/services/messageService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/messageController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/newsController.js' ></script>
+		<script defer src='./client/client_mvc/services/newsService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/evenController.js' ></script>
+		<script defer src='./client/client_mvc/services/evenService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/libraryController.js' ></script>
+		<script defer src='./client/client_mvc/services/libraryService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/taskController.js' ></script>
+		<script defer src='./client/client_mvc/services/taskService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/attendanceController.js' ></script>
+		<script defer src='./client/client_mvc/services/attendanceService.js' ></script>
+		<script defer src='./client/client_mvc/services/smsService.js' ></script>
+		<script defer src='./client/client_mvc/services/whatsappService.js' ></script>
+		<script defer src='./client/client_mvc/services/seatService.js' ></script>
+		<script defer src='./client/client_mvc/controllers/uploadDataController.js' ></script>
+		<script defer src='./client/client_mvc/controllers/discontinueController.js' ></script>
+		<script defer src='./client/js/angularjs-google-maps.js' ></script>
+		<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi9XeD-hFBzJ-Pi-t7SqMMarCkocpcnXQ&libraries=places"></script>
+
+	    <!--<script src='./client/js/googlemapapi.js'></script>-->
+
+	    <script>
+			/* returns a true value if device has a touch screen no matter what type of device it is */ 
+			var isTouchScreen = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+			if(isTouchScreen === true) {
+				//alert("You are using a touch screen")
+				document.write('<link rel="stylesheet" type="text/css" href="./client/mys_css/mobile-style.css">');
+
+			} else {
+			 	//alert("You are Browser")
+			}
+
+			/* ALternate Option */
+			/*
+			var bMobile =   // will be true if running on a mobile device
+			navigator.userAgent.indexOf( "Mobile" ) !== -1 || 
+			navigator.userAgent.indexOf( "iPhone" ) !== -1 || 
+			navigator.userAgent.indexOf( "Android" ) !== -1 || 
+			navigator.userAgent.indexOf( "Windows Phone" ) !== -1 ;
+		    */
+		</script>
+
+   		<script>
+			function isNumberKey(evt) {
+				var charCode = (evt.which) ? evt.which : evt.keyCode;
+				if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+					return false;
+				} else if (charCode >= 65 && charCode <= 90) {
+					return true;
+				}
+				//For Backspace
+				else if (charCode == 8) {
+					return true;
+				} else if (charCode == 9) {
+					return true;
+				}
+				//For General
+				else if (charCode == 0) {
+					return true;
+				}
+				//For Space
+				else if (charCode == 32) {
+					return true;
+				} else {
+					return true;
+				}
+			}
+
+			function isAlphabetspcKey(event){
+				var char = event.which;
+				if(char>31 && char != 32 && (char<65 || char>90) && (char<97 || char>122)){
+					return false;
+				}
+			}
+
+			function isCharacterKey(evt) {
+
+				var keyval = (evt.which) ? evt.which : evt.keyCode
+
+				if (keyval < 48 || keyval > 57) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function isNameKey(evt){
+				var keyval = (evt.which) ? evt.which : evt.keyCode;
+				if(keyval > 96 && keyval < 123)
+				{
+					return true;
+				}
+				else if(keyval > 64 && keyval < 91)
+				{
+					return true;
+				}
+				else if(keyval == 32 || keyval == 46)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		</script>
+		<script>
+			function AvoidSpace(event) {
+				var k = event ? event.which : window.event.keyCode;
+				if (k == 32) {
+					return false;
+				}
+
+			}
+		</script>
+		<script>
+			if(app_mode != 'offline'){
+				//var socket = io.connect("https://schezy.com:3000");
+				var socket = null;
+				// console.log($host[1])
+				<?php if($host[1] == 'schezy' && $host[2] == 'com') { ?>
+					socket = io.connect("https://schezy.com/socket.io");
+				<?php }else{ ?>
+					socket = io.connect("http://<?php echo $host[1].'.'.$host[2]; ?>/socket.io");
+				<?php } ?>
+                                
+			}
+		</script>
+		<audio id="notification_sound" src="./client/sound/solemn.m4r" preload="auto"></audio>
+
+	</body>
+	<div id="veil" data-ng-show="showLoader"></div>
+	<div id="feedLoading"  ng-show="showLoader"><div class="load_wrap_inner" >
+		<div class="load_wrap_img"></div>
+		<p class="load_wrap_text"> Schezy Loading... </p>
+	</div>
+</div>
+</html>
+
+<?php
+}
+?>
