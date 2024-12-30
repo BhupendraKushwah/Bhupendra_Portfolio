@@ -1,4 +1,12 @@
+const fs = require('fs');
+const path = require('path');
 const winston = require('winston');
+
+// Ensure the logs directory exists
+const logDirectory = path.join(__dirname, '../logs');
+if (!fs.existsSync(logDirectory)) {
+  fs.mkdirSync(logDirectory, { recursive: true });
+}
 
 const logFormat = winston.format.printf(({ timestamp, level, functionName, message, stack, body }) => {
   const errorLogObj = {
@@ -7,7 +15,7 @@ const logFormat = winston.format.printf(({ timestamp, level, functionName, messa
     functionName,
     message,
     stack,
-    body
+    body,
   };
 
   // Return the log as a JSON string
@@ -29,7 +37,7 @@ const logger = winston.createLogger({
         logFormat
       ),
     }),
-    new winston.transports.File({ filename: 'logs/app.log' }), // Logs to file
+    new winston.transports.File({ filename: path.join(logDirectory, 'app.log') }), // Logs to file
   ],
 });
 
