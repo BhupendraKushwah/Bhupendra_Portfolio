@@ -15,3 +15,5 @@ app.use('/',require('./routes'));
 app.listen(PORT,()=>{
     console.log(`Server initialized on port ${PORT}`)
 });
+
+module.exports = app

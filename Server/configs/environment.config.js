@@ -37,7 +37,7 @@ try {
      * Ensuring Staging & Production
      * variables
      */
-  
+
     if (NODE_ENV !== 'development') {
   
       if (!MAIL_HOST || !MAIL_PASSWORD || !MAIL_USERNAME || !MAIL_PORT)
