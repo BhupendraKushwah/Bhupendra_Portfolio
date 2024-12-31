@@ -5,10 +5,10 @@ import { getAuthHeader } from "../services/Authentication.service";
 function makeRequest(method, baseUrl, responseType = "json") {
 	return async function (url, data = {}, options = {}) {
 		if (!url) throw new Error("URL can't be blank");
-		if(!import.meta.env.VITE_ENV=='development'){
+		// if(!import.meta.env.VITE_ENV=='development'){
 			baseUrl = import.meta.env.VITE_SERVER_URL
 			console.log('ENV :',import.meta.env.VITE_SERVER_URL)
-		}
+		// }
 		const isDataIsParams = method === "get" || method === "delete";
 		const { status, error, ...params } = isDataIsParams ? data : options;
 
