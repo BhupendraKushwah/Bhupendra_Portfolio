@@ -8,7 +8,7 @@ mongoose
   dbName,
   autoIndex: true,
 })
-  .then((status) => console.info(`Connection establised to ${dbName}`))
+  .then((status) => console.info(`Connectionn establised to ${dbName}`))
   .catch((err) =>
     console.error(`Could not connect to database: ${err.message}`)
   );

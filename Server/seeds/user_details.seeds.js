@@ -1,37 +1,53 @@
-const bcrypt = require('bcryptjs');
-const User = require('../models/user.model');
-require('../configs/database.config')
+const mongoose = require('mongoose');
+const User = require('../models/user.model'); // Adjust the path based on your project structure
 
-const superadminSeed = async () => {
+const seedDatabase = async () => {
   try {
-    let password = await bcrypt.hash('#Bhupendra2003',12);
-    const existingAdmin = await User.findOne({password});
-    if (existingAdmin) {
-      console.log('Superadmin already exists');
-      process.exit();
-      return;
-    }
+    // Connect to your MongoDB
+    await mongoose.connect(
+      'mongodb+srv://bhupendrakushwah977:Kwe85Kj1J0od4i32@portfolio.u79k4.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Portfolio',
+      { useNewUrlParser: true, useUnifiedTopology: true }
+    );    
 
-    const superadminData = {
-      password: '#Bhupendra2003',
-      lastLogin: new Date(),
-    };
+    console.log('Connected to MongoDB');
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(superadminData.password, 12);
-    superadminData.password = hashedPassword;
+    // Define seed data
+    const seedData = [
+      {
+        name: "Bhupendra Kushwah",
+        password: "$2a$12$FKeofwctaM5fgCT61mvMLuAJXl7WWWyTmujnyxmSRT2R6eJRnjeIi", // Pre-hashed password
+        street: "Pinto Park",
+        city: "Morar",
+        state: "Madhya Pradesh",
+        zip_code: "474006",
+        contactEmail: "bhupendrakushwah977@gmail.com",
+        experience: 1,
+        projectsCount: 2,
+        jobTitle: "Full stack Developer",
+        jobBrief: `I design and develop services for customers specializing in creating stylish, modern websites, web services, and online stores. My passion is to design digital user experiences.
+    
+    I design and develop services for customers specializing in creating stylish, modern websites, web services.`,
+        image: "https://res.cloudinary.com/dmj6kmhrd/image/upload/v1735472567/tjny2ufbs1evfzjgmrsx.jpg",
+        resume: "https://res.cloudinary.com/dmj6kmhrd/image/upload/v1735472568/pfowxdwffyuctvukjv7f.pdf",
+        isActive: true,
+        socialLinks: {
+          github: "https://chatgpt.com/c/6766f055-7e4c-8001-8b14-6c208216fa6e",
+          linkedIn: "https://chatgpt.com/c/6766f055-7e4c-8001-8b14-6c208216fa6e",
+          x: "https://chatgpt.com/c/6766f055-7e4c-8001-8b14-6c208216fa6e",
+          instagram: "https://chatgpt.com/c/6766f055-7e4c-8001-8b14-6c208216fa6e",
+        },
+      },
+    ];
 
-    // Create a new superadmin user
-    const superadmin = new User(superadminData);
-    await superadmin.save();
+    // Insert seed data into the database
+    await User.insertMany(seedData);
 
-    console.log('Superadmin added successfully!');
-    process.exit();
-  } catch (err) {
-    console.error('Error adding superadmin:', err);
-    process.exit(1);
+    console.log('Database seeded successfully');
+  } catch (error) {
+    console.error('Error seeding the database:', error);
+  } finally {
+    mongoose.connection.close();
   }
 };
 
-// Run the seed function
-superadminSeed();
+seedDatabase();
