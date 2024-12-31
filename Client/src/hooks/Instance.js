@@ -30,7 +30,7 @@ function makeRequest(method, baseUrl, responseType = "json") {
 	};
 }
 
-export default function useInstance(baseUrl = "/api/") {
+export default function useInstance(baseUrl = "/") {
 	return {
 		get: makeRequest("get", baseUrl),
 		post: makeRequest("post", baseUrl),
