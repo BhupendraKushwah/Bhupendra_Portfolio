@@ -38,12 +38,12 @@ try {
      * variables
      */
 
-    if (NODE_ENV !== 'development') {
+    // if (NODE_ENV !== 'development') {
   
-      if (!MAIL_HOST || !MAIL_PASSWORD || !MAIL_USERNAME || !MAIL_PORT)
-        errors.push('Sending E-mail not configured');
+    //   if (!MAIL_HOST || !MAIL_PASSWORD || !MAIL_USERNAME || !MAIL_PORT)
+    //     errors.push('Sending E-mail not configured');
   
-    }
+    // }
   
     if (errors.length > 0) {
       throw new Error(errors.join(', '));
