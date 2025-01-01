@@ -19,7 +19,7 @@ const SkillManager = () => {
                 data.append(key, formdata[key]);
             });
             data.append('skill_image', FileName);
-            let response = await Instance.post('/superadmin/add-skills', data);
+            let response = await Instance.post('superadmin/add-skills', data);
             setSkillData(prev => [...prev, response.data])
             reset();
             setFileName(null);

@@ -8,7 +8,7 @@ const ProfileData = () => {
 
   useEffect(() => {
     const getProfileData = async () => {
-      let response = await Instance.get('/superadmin/getProfileData');
+      let response = await Instance.get('superadmin/getProfileData');
       setProfile(response.data);
     };
     getProfileData();
