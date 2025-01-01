@@ -6,7 +6,7 @@ const path = require('path');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         // Define the dynamic folder path
-        const uploadPath = path.join(__dirname, '../uploads');
+        const uploadPath = path.join(__dirname, '../tmp');
 
         // Check if the folder exists
         if (!fs.existsSync(uploadPath)) {
