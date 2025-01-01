@@ -5,12 +5,11 @@ const path = require('path');
 // Configure Multer storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        // Define the dynamic folder path
-        const uploadPath = path.join(__dirname, '../tmp');
+        // Use the `/tmp` directory provided by serverless environments
+        const uploadPath = '/tmp';
 
-        // Check if the folder exists
+        // Ensure the directory exists (although `/tmp` should already exist)
         if (!fs.existsSync(uploadPath)) {
-            // Create the folder if it doesn't exist
             fs.mkdirSync(uploadPath, { recursive: true });
         }
 
@@ -18,7 +17,7 @@ const storage = multer.diskStorage({
         cb(null, uploadPath);
     },
     filename: (req, file, cb) => {
-        // Save the file with its original name
+        // Save the file with a unique timestamp
         cb(null, `${Date.now()}_${file.originalname}`);
     }
 });

@@ -89,7 +89,7 @@ const SkillManager = () => {
 
     useEffect(() => {
         const getSkillData = async () => {
-            let response = await Instance.get('/superadmin/getSkillData');
+            let response = await Instance.get('superadmin/getSkillData');
             setSkillData(response.data)
         }
         getSkillData();
