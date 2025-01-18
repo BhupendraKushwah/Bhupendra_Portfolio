@@ -45,7 +45,7 @@ const Skills = () => {
 
     return (
         <div className="skill-section">
-            <div className="profile-view-main max-w-[950px] m-auto mt-[-150px] lg:mt-[-380px]">
+            <div id="profileView" className="profile-view-main max-w-[950px] m-auto mt-[-150px] lg:mt-[-380px]">
                 <ProfileView />
             </div>
 

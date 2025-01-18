@@ -11,13 +11,24 @@ const Portfolio = () => {
     return (
         <>
             <Navbar />
-            <Dashboard />
-            <Skills />
-            <Projects />
-            <Discuss />
-            <ContactForm />
+            <div id="dashboard">
+                <Dashboard />
+            </div>
+            <div id="skills">
+                <Skills />
+            </div>
+            <div id="projects">
+                <Projects />
+            </div>
+            <div id="discuss">
+                <Discuss />
+            </div>
+            <div id="contact">
+                <ContactForm />
+            </div>
             <Footer />
         </>
-    )
-}
+    );
+};
+
 export default Portfolio;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from './Button';
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from 'react-scroll';
+
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,14 +21,24 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="nav-content hidden md:flex items-center justify-center space-x-6">
-                        <li className="nav-item cursor-pointer">Home</li>
-                        <li className="nav-item cursor-pointer">About</li>
-                        <li className="nav-item cursor-pointer">Portfolio</li>
                         <li className="nav-item cursor-pointer">
-                            <Link to='admin_login'>
-                            Super Admin
-                            </Link></li>
-                        <Button Button_text="Contact" />
+                            <ScrollLink to="dashboard" smooth={true} duration={500}>
+                                Home
+                            </ScrollLink>
+                        </li>
+                        <li className="nav-item cursor-pointer">
+                            <ScrollLink to="profileView" smooth={true} duration={500}>
+                                About
+                            </ScrollLink>
+                        </li>
+                        <li className="nav-item cursor-pointer">
+                            <ScrollLink to="projects" smooth={true} duration={500}>
+                                Projects
+                            </ScrollLink>
+                        </li>
+                        <ScrollLink to="discuss" smooth={true} duration={500}>
+                            <Button Button_text="Contact" />
+                        </ScrollLink>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -47,49 +58,45 @@ const Navbar = () => {
                 // Close the menu when clicked outside
                 >
 
-                    <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+                    <aside id="default-sidebar" className={`fixed left-0 z-40 w-64 h-full bg-gray-100 dark:bg-gray-800 transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0 top-0" : "-translate-x-full"
+                        } md:translate-x-0`} aria-label="Sidebar">
                         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                             <a href="https://flowbite.com/" className="flex items-center ps-2.5 mb-1 border-b py-3">
                                 {/* <img src="/logo.svg" className="h-6 me-3 sm:h-7" alt="Portfolio Logo" /> */}
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white"> BHUPENDRA<span className="text-primary text-2xl">.</span></span>
                             </a>
                             <ul className="space-y-2 font-medium">
-                                <li>
-                                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <li onClick={toggleMobileMenu}>
+                                    <ScrollLink to="dashboard" smooth={true} duration={500} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                         <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" />
                                         </svg>
-                                        <span className="ms-3">Home</span>
-                                    </a>
+                                        <span className="ms-3">
+                                            Home
+                                        </span>
+                                    </ScrollLink>
                                 </li>
-                                <li>
-                                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <li onClick={toggleMobileMenu}>
+                                    <ScrollLink to="profileView" smooth={true} duration={500} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                         <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v2h12v-2c0-3.31-2.69-6-6-6z" />
                                         </svg>
                                         <span className="flex-1 ms-3 whitespace-nowrap">About</span>
-                                    </a>
+                                    </ScrollLink>
                                 </li>
-                                <li>
-                                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <li onClick={toggleMobileMenu}>
+                                    <ScrollLink to="projects" smooth={true} duration={500} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                         <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                             <path d="M6 2h12c1.1 0 1.99.9 1.99 2L20 20c0 1.1-.89 2-1.99 2H4c-1.1 0-1.99-.9-1.99-2L4 4c0-1.1.89-2 1.99-2zm1 2v16h12V4H7z" />
 
                                         </svg>
-                                        <span className="flex-1 ms-3 whitespace-nowrap">Portfolio</span>
-                                    </a>
+                                        <span className="flex-1 ms-3 whitespace-nowrap">Projetcs</span>
+                                    </ScrollLink>
                                 </li>
-                                <li>
-                                    <Link to='/admin_login' className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                        <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                            <path d="M6 2h12c1.1 0 1.99.9 1.99 2L20 20c0 1.1-.89 2-1.99 2H4c-1.1 0-1.99-.9-1.99-2L4 4c0-1.1.89-2 1.99-2zm1 2v16h12V4H7z" />
-
-                                        </svg>
-                                        <span className="flex-1 ms-3 whitespace-nowrap">Portfolio</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Button Button_text="Contact" />
+                                <li onClick={toggleMobileMenu}>
+                                    <ScrollLink to="discuss" smooth={true} duration={500}>
+                                        <Button Button_text="Contact" />
+                                    </ScrollLink>
                                 </li>
                             </ul>
                         </div>

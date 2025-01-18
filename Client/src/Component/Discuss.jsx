@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Discuss = () => {
     return (
@@ -13,8 +14,9 @@ const Discuss = () => {
                         but the majority have suffered alteration.</p>
                 </div>
                 <div className="work_together_btn my-2">
-                    <Button Button_text={'Lets work together'} />
-
+                    <ScrollLink to="contact" smooth={true} duration={500}>
+                        <Button Button_text={'Lets work together'} />
+                    </ScrollLink>
                 </div>
             </div>
         </>
