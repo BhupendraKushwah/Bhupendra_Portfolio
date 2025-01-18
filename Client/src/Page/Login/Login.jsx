@@ -11,7 +11,7 @@ const Login = () => {
                 .then(loginData => {
                     console.log(loginData)
                     localStorage.setItem("persistantState", JSON.stringify({ authToken: loginData.token }))
-                    window.location.href = '/superadmin/';
+                    window.location.href = '/superadmin/profile_manager';
                     toast.success(loginData.message);
                 })
                 .catch(error => {
@@ -25,7 +25,7 @@ const Login = () => {
     useEffect(() => {
         let token = JSON.parse(localStorage.getItem('persistantState'))?.authToken;
         if (token)
-            window.location.href = '/superadmin/';
+            window.location.href = '/superadmin/profile_manager';
     }, [])
     return (
         <>
