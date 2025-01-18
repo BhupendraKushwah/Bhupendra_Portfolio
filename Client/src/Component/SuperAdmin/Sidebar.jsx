@@ -56,10 +56,10 @@ const Sidebar = () => {
                 ></div>
                 <aside
                     id="default-sidebar1"
-                    className={`fixed left-0 z-40 w-64 h-full bg-gray-100 dark:bg-gray-800 transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0 top-0" : "-translate-x-full"
+                    className={`fixed left-0 z-40 w-64 h-full bg-gray-100 dark:bg-slate-800 transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0 top-0" : "-translate-x-full"
                         } md:translate-x-0`}
                 >
-                    <div className="h-full px-3 py-4 bg-gray-100 dark:bg-gray-800">
+                    <div className="h-full px-3 py-4 bg-gray-100 dark:bg-slate-800">
                         <div className="logo text-2xl p-2 sm:hidden">
                             BHUPENDRA<span className="text-primary text-2xl">.</span>
                         </div>
@@ -117,7 +117,7 @@ const Sidebar = () => {
                                 </p>
 
                                 <div
-                                    className="absolute sm:left-[200px] sm:top-0 hidden w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block dark:bg-gray-800 dark:border-gray-700"
+                                    className="absolute sm:left-[200px] sm:top-0 hidden w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block dark:bg-slate-800 dark:border-gray-700"
                                 >
                                     <Link
                                         to="/superadmin/project_manager/manage"

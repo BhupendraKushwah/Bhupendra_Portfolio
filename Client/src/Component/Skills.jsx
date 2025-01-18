@@ -45,13 +45,13 @@ const Skills = () => {
 
     return (
         <div className="skill-section">
-            <div id="profileView" className="profile-view-main max-w-[950px] m-auto mt-[-150px] lg:mt-[-380px]">
+            <div id="profileView" className="dark:bg-slate-800 dark:text-white profile-view-main max-w-[950px] m-auto mt-[-150px] lg:mt-[-380px]">
                 <ProfileView />
             </div>
 
             <div className="lg:container lg:px-6 max-w-[950px] flex flex-col lg:flex-row md:flex-row gap-2 justify-around pf-margin mb-5">
                 <div className="skill_text w-full lg:w-1/2">
-                    <div className="skill_heading text-base bg-white text-primary mx-auto">
+                    <div className="skill_heading text-base bg-white text-primary mx-auto dark:text-white">
                         Skills
                     </div>
 
@@ -67,9 +67,8 @@ const Skills = () => {
                                 <li
                                     key={skill.key}
                                     onClick={() => handleSkillSwitch(skill.key)}
-                                    className={`skill-nav-item py-2 px-4 border text-base rounded cursor-pointer ${
-                                        activeSkill === skill.key ? 'active' : ''
-                                    }`}
+                                    className={`skill-nav-item py-2 px-4 border text-base rounded cursor-pointer ${activeSkill === skill.key ? 'active' : ''
+                                        }`}
                                 >
                                     {skill.label}
                                 </li>
@@ -80,7 +79,7 @@ const Skills = () => {
                     <div className="skill_data">
                         <div className="skill-card flex justify-start flex-wrap gap-4 lg:gap-12">
                             {skillData.map((src, index) => (
-                                <div className="skill-item cursor-pointer" key={index}>
+                                <div className="skill-item cursor-pointer dark:bg-slate-800 dark:text-white" key={index}>
                                     <img src={src} alt={`Skill ${index}`} className="p-2" />
                                 </div>
                             ))}

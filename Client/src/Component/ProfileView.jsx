@@ -49,13 +49,13 @@ export default () => {
         <>
             <ToastContainer />
             <div className="profile-view">
-                <div className="container flex flex-col-reverse md:flex-row lg:flex-row justify-between items-center lg:justify-between rounded border border-0 bg-white p-6 lg:p-[5rem] gap-6">
+                <div className="container flex flex-col-reverse md:flex-row lg:flex-row justify-between items-center lg:justify-between rounded border border-0 bg-white p-6 lg:p-[5rem] gap-6 dark:bg-slate-800 dark:text-white">
                     <div className="profile-image relative flex items-center justify-center basis-2/5 p-4">
                         <div className="image rounded relative">
                             <img src={profileData.image} className="rounded relative z-10 border-0 border-0" alt="pic" />
                             <div className="img-back top-0 w-full h-full border-primary border-8 absolute"></div>
                         </div>
-                        <div className="social-media list-none flex z-10 absolute bg-white text-primary rounded border border-0 shadow-lg text-lg bottom-[-10px] p-2 gap-2">
+                        <div className="social-media list-none flex z-10 absolute bg-white text-primary rounded border border-0 shadow-lg text-lg bottom-[-10px] p-2 gap-2 dark:bg-slate-800 dark:text-white">
                             {["github", "linkedin", "x", "instagram"].map((platform) => (
                                 <a
                                     key={platform}

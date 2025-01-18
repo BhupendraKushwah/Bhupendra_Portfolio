@@ -133,24 +133,35 @@ li.skill-nav-item.active {
   letter-spacing: 2px;
   padding: 5px 10px;
   font-size: 1.5rem;
-  /* Adjusted for readability on small screens */
+  text-align: center; /* Optional: Aligns text for better appearance */
+  background: linear-gradient(90deg, #ffffff, #ffffff); /* Light theme background */
+  border-radius: 8px; /* Optional: Adds rounded corners */
 }
 
-/* Style for the overlay effect */
-.skill_heading::after {
+/* Style for dark mode background */
+.dark .skill_heading {
+  background: linear-gradient(90deg, #1e293b, #334155); /* Dark theme background */
+}
+
+.dark .skill_heading::before {
+  z-index: 0;
+}
+
+/* Overlay effect for the heading */
+.skill_heading::before {
   transform: translate(0%, -50%);
-  content: 'Skills';
+  content: 'Skills'; /* Duplicate text for overlay effect */
   position: absolute;
   top: 10px;
   left: -3%;
-  font-size: 9rem;
-  color: transparent;
-  -webkit-text-stroke: 4px #00574387;
-  z-index: -1;
-  opacity: 0.3;
-  transition: transform 0.3s;
+  /* transform: translate(-50%, -50%); */
+  font-size: 9rem; /* Large text size */
+  color: transparent; /* Transparent fill */
+  -webkit-text-stroke: 4px #00574387; /* Stroke effect */
+  z-index: -1; /* Ensures it's behind the heading text */
+  opacity: 0.3; /* Adjust visibility */
+  transition: transform 0.3s, opacity 0.3s;
 }
-
 /* Responsive Styles */
 
 /* Small screens (Mobile-first) */
@@ -235,6 +246,11 @@ li.skill-nav-item.active {
   box-shadow: 0 2px 10px #e5e5e5;
 }
 
+.dark .profile-view-main {
+  box-shadow: 0 2px 10px #656565;
+}
+
+
 .pf-margin {
   padding-top: 80px;
 }
@@ -251,6 +267,10 @@ li.skill-nav-item.active {
 
 .contact-box {
   box-shadow: 0 2px 4px 1px #ccc;
+}
+
+.dark .contact-box {
+  box-shadow: 0 2px 4px 1px #656565;
 }
 
 .form-group {
@@ -283,8 +303,15 @@ li.skill-nav-item.active {
     background-color: #fff;
     padding: 0 5px;
     font-size: 14px;
-
   }
+}
+.dark .input-group:focus + .label {
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
+  color: white;
+}
+
+.dark .input-group{
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
 }
 
 
@@ -294,3 +321,37 @@ li.skill-nav-item.active {
   left: 9px;
   transition: transform .2s ease;
 }
+
+
+.checkbox-label {
+  background-color: #111;
+  width: 70px;
+  height: 40px;
+  border-radius: 0px 50px 50px 0;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-label .ball {
+  /* background-color: #fff; */
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(35px);
+}
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {color: #f39c12;}

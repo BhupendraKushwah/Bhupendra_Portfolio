@@ -89,7 +89,7 @@ const Dashboard = () => {
             </div>
 
             {/* Job Analytics Section */}
-            <div className="job-analytics w-full sm:w-3/4 md:w-2/3">
+            <div className="job-analytics w-full sm:w-3/4 md:w-2/3" >
               {loading ? (
                 <SkeletonTheme baseColor="#fff" highlightColor="#ccc">
                   <p>

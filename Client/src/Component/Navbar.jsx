@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from './Button';
 import { Link as ScrollLink } from 'react-scroll';
 
@@ -58,9 +58,9 @@ const Navbar = () => {
                 // Close the menu when clicked outside
                 >
 
-                    <aside id="default-sidebar" className={`fixed left-0 z-40 w-64 h-full bg-gray-100 dark:bg-gray-800 transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0 top-0" : "-translate-x-full"
+                    <aside id="default-sidebar" className={`fixed left-0 z-40 w-64 h-full bg-gray-100 dark:bg-slate-800 transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0 top-0" : "-translate-x-full"
                         } md:translate-x-0`} aria-label="Sidebar">
-                        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-slate-800">
                             <a href="https://flowbite.com/" className="flex items-center ps-2.5 mb-1 border-b py-3">
                                 {/* <img src="/logo.svg" className="h-6 me-3 sm:h-7" alt="Portfolio Logo" /> */}
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white"> BHUPENDRA<span className="text-primary text-2xl">.</span></span>

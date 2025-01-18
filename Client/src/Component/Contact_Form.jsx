@@ -44,7 +44,7 @@ const ContactForm = () => {
                         <p className="text-sm mt-2">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, quas!
                         </p>
-                        <div className="address contact-box p-3 my-4 border rounded flex items-center gap-4 bg-secondary">
+                        <div className="address contact-box p-3 my-4 border rounded flex items-center gap-4 bg-secondary dark:bg-slate-800 dark:text-white dark:border-slate-800">
                             <i className="fa fa-solid fa-location-dot text-3xl text-primary"></i>
                             <div className="details">
                                 <h3 className="text-primary text-sm">Address</h3>
@@ -55,14 +55,14 @@ const ContactForm = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="social-media list-none justify-evenly flex bg-white text-primary rounded border border-0 shadow-lg text-lg bottom-[-10px] p-2 gap-2">
+                        <div className="social-media list-none flex justify-evenly bg-white text-primary rounded border border-0 shadow-lg text-lg bottom-[-10px] p-2 gap-2 dark:bg-slate-800 dark:text-white">
                             {["github", "linkedin", "x", "instagram"].map((platform) => (
                                 <a
                                     key={platform}
                                     href={contactData?.socialLinks?.[platform] || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="cursor-pointer hover:text-white hover:bg-primary py-1 px-2 transition duration-300"
+                                    className="cursor-pointer hover:text-white hover:bg-primary py-1 px-2 transition duration-300 rounded border"
                                 >
                                     <i className={`fa-brands fa-${platform == 'x' ? platform + '-twitter' : platform}`}></i>
                                 </a>
@@ -88,7 +88,7 @@ const ContactForm = () => {
                                     />
                                     <label
                                         htmlFor={field}
-                                        className={`label cursor-text text-placeholder text-[15px] ${errors[field] && "text-red"}`}
+                                        className={`label cursor-text text-placeholder text-[15px] dark:dark-label dark:text-white ${errors[field] && "text-red"}`}
                                     >
                                         {field.charAt(0).toUpperCase() + field.slice(1)}
                                     </label>
