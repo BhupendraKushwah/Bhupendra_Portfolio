@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 const JobAnalytics = ({ experience, projectsCount }) => {
     return (
-        <div className="job-analytics shadow-lg flex border mx-5 rounded-lg bg-secondary">
+        <div className="job-analytics shadow-lg flex border mx-5 rounded-lg bg-secondary dark:bg-slate-800 dark:text-white">
             <div className="experience-time p-2 md:p-2 lg:p-3 border-r basis-1/2 text-center">
                 <span className="font-bold text-2xl">{experience} Years</span>
                 <br />

@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}","./node_modules/react-tailwindcss-select/dist/index.esm.js", "./node_modules/flowbite/**/*.js"], // Ensure all file types are covered
-  // darkMode: 'class', // Use class-based dark mode
+  darkMode: 'class', // or 'media' for system preference
   theme: {
     container: {
       center: true,

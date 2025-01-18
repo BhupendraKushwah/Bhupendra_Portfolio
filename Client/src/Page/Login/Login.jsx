@@ -1,9 +1,9 @@
 import useInstance from "../../hooks/Instance";
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
-    let { handleSubmit, register, watch, formState: { errors, isSubmitting } } = useForm({ mode: "onChange" });
+    let { handleSubmit, register, formState: { errors, isSubmitting } } = useForm({ mode: "onChange" });
     const Instance = useInstance();
     const handleFormSubmit = async (formdata) => {
         try {
@@ -38,7 +38,7 @@ const Login = () => {
                         </div>
                         <div className="">
                             <button className="px-4 py-2 bg-primary text-white border border-primary rounded-full" type="submit" disabled={isSubmitting}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>

@@ -1,4 +1,4 @@
-import {React,lazy} from "react";
+import {lazy} from "react";
 import './App.css';
 import './output.css';
 const Route = lazy(() => import("./Route/index"));
